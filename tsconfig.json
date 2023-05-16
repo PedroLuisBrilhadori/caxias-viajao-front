@@ -19,7 +19,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@components/": ["./src/components/"]
+      "@components/": ["./src/components/"],
+      "@services/": ["./src/services/"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],

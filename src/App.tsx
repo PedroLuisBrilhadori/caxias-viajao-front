@@ -1,11 +1,22 @@
 import "./styles/App.css";
 
-import { TSPRoutesComponent } from "@components/";
+import { TSPRoutesComponent, TspRoute } from "@components/";
+import { useEffect, useState } from "react";
+
+import { getTspRoutes } from "./services";
 
 function App() {
+  const [locations, setLocations] = useState<TspRoute[]>([]);
+
+  useEffect(() => {
+    getTspRoutes().then((locations) => {
+      setLocations(locations);
+    });
+  });
+
   return (
     <main>
-      <TSPRoutesComponent />
+      <TSPRoutesComponent locations={locations} />
     </main>
   );
 }

@@ -1,21 +1,23 @@
-import { Graph, GraphData, GraphLink, GraphNode } from "react-d3-graph";
+import { Graph, GraphLink } from "react-d3-graph";
+import { TSPGraphData, TSPRoutesComponentProps, TspRoute } from "./types";
 
 import { graphConfig } from "./graph.config";
 
-const graphData: GraphData<GraphNode, GraphLink> = {
-  nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
-  links: [
-    { source: "Harry", target: "Sally" },
-    { source: "Sally", target: "Alice" },
-  ],
+const getNodeLinks = (locations: TspRoute[]): GraphLink[] => {
+  return locations.map(({ id, targetId }) => ({
+    source: id,
+    target: targetId,
+  }));
 };
 
-export const TSPRoutesComponent = () => {
-  return (
-    <Graph
-      id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-      data={graphData}
-      config={graphConfig}
-    />
-  );
+export const TSPRoutesComponent = ({ locations }: TSPRoutesComponentProps) => {
+  // TODO: adicionar componente para gráfico vazio
+  if (locations.length === 0) return <></>;
+
+  const graphData: TSPGraphData = {
+    nodes: locations,
+    links: getNodeLinks(locations),
+  };
+
+  return <Graph id="salesmen" data={graphData} config={graphConfig} />;
 };
