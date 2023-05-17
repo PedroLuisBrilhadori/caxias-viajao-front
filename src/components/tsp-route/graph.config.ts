@@ -28,7 +28,7 @@ export const linkConfig = {
 export const d3Config = {
   alphaTarget: 0.05,
   gravity: -100,
-  linkLength: 100,
+  linkLength: 200,
   linkStrength: 1,
   disableLinkForce: false,
 };
@@ -37,7 +37,7 @@ export const config = {
   automaticRearrangeAfterDropNode: false,
   collapsible: false,
   directed: true,
-  focusAnimationDuration: 0.75,
+  focusAnimationDuration: 0.2,
   focusZoom: 1,
   freezeAllDragEvents: false,
   height: 600,
@@ -46,7 +46,7 @@ export const config = {
   highlightOpacity: 1,
   linkHighlightBehavior: false,
   maxZoom: 8,
-  minZoom: 2,
+  minZoom: 0.1,
   nodeHighlightBehavior: false,
   panAndZoom: false,
   staticGraph: false,
