@@ -11,7 +11,7 @@ export const graphConfig = {
     },
     labelCfg: {
       style: {
-        fill: "#fff",
+        fill: "#000",
         fontSize: 20,
       },
     },
