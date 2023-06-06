@@ -9,14 +9,19 @@ import { getGraphData } from "./services";
 function App() {
   const [data, setData] = useState<GraphData>({});
   const ref = useRef<GraphRef>(null);
+  const renderAfterCalled = useRef(false);
 
   useEffect(() => {
-    getGraphData().then((data) => {
-      setData(data);
-      if (ref.current) {
-        ref.current.refresh(data);
-      }
-    });
+    if (renderAfterCalled.current) {
+      getGraphData().then((data) => {
+        setData(data);
+        if (ref.current) {
+          ref.current.refresh(data);
+        }
+      });
+    }
+
+    renderAfterCalled.current = true;
   }, []);
 
   return (

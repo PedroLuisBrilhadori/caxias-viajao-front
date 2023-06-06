@@ -26,15 +26,27 @@ async function getTspRoutes(): Promise<TspRoute[]> {
     headers,
     body: JSON.stringify({
       name: "inst_10",
-      cache: true,
-      data: "",
+      cache: false,
+      data: `10
+      27  45
+       5  96   9 430
+       4  87   7  17
+      67   5   8 449
+      77 100  20 490
+      96  24  11 428
+      78  68  17 535
+      91  64   6  28
+      15  26   7 419
+     `,
     }),
   });
   const json = await response.json();
 
+  console.log(json);
+
   const locations: TspRoute[] = [];
 
-  for (const routes of json) {
+  for (const routes of json.routes) {
     if (routes.id != "0") locations.push({ ...routes, img });
     else locations.push({ ...routes, img: img1 });
   }
