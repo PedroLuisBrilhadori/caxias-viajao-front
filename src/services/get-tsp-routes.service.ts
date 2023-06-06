@@ -18,7 +18,18 @@ type TspRoute = {
 };
 
 async function getTspRoutes(): Promise<TspRoute[]> {
-  const response = await fetch("http://localhost:5000/routes");
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
+  const response = await fetch("http://localhost:5000/routes", {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      name: "inst_10",
+      cache: true,
+      data: "",
+    }),
+  });
   const json = await response.json();
 
   const locations: TspRoute[] = [];
