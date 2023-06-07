@@ -1,19 +1,15 @@
 import { DetailsOptions, Option, SideBarOption } from "./options";
 
-const option: Option = {
-  name: "test",
-  onClick() {
-    console.log("click");
+const options: Option[] = [
+  {
+    name: "index",
+    href: "/",
   },
-  details: [
-    {
-      name: "test",
-      onClick() {
-        console.log("click in detail");
-      },
-    },
-  ],
-};
+  {
+    name: "graph",
+    href: "/graph",
+  },
+];
 
 export const SideBar = () => {
   return (
@@ -24,8 +20,8 @@ export const SideBar = () => {
         </span>
 
         <ul className="mt-6 space-y-1">
-          <SideBarOption name="Pedro" onClick={() => console.log("test")} />
-          <DetailsOptions option={option} />
+          <SideBarOption option={options[0]} />
+          <SideBarOption option={options[1]} />
         </ul>
       </div>
     </div>

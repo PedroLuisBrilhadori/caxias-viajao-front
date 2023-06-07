@@ -5,7 +5,11 @@ export type Option = {
   details?: Option[];
 };
 
-export const SideBarOption = ({ name, onClick, href }: Option) => {
+export const SideBarOption = ({
+  option: { name, onClick, href },
+}: {
+  option: Option;
+}) => {
   return (
     <li>
       <a
