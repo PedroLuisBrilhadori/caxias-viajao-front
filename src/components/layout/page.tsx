@@ -6,7 +6,7 @@ type Props = {
 
 export const Page = ({ children }: Props) => {
   return (
-    <div>
+    <div className="flex items-center justify-between">
       <div className="w-64">
         <SideBar></SideBar>
       </div>

@@ -13,6 +13,7 @@ export const GraphPage = () => {
     if (renderAfterCalled.current) {
       getGraphData().then((data) => {
         setData(data);
+
         if (ref.current) {
           ref.current.refresh(data);
         }

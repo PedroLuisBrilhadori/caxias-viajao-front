@@ -26,7 +26,7 @@ async function getTspRoutes(): Promise<TspRoute[]> {
     headers,
     body: JSON.stringify({
       name: "inst_10",
-      cache: false,
+      cache: true,
       data: `10
       27  45
        5  96   9 430
