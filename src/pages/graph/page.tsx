@@ -1,6 +1,7 @@
-import { GraphComponent, Page } from "../components";
-import { getGraphData } from "../services";
+import { Page } from "../../components";
+import { getGraphData } from "../../services";
 import { useQuery } from "@tanstack/react-query";
+import { WithData } from "./graph";
 
 export const GraphPage = () => {
   const { isLoading, error, data } = useQuery({
@@ -19,9 +20,5 @@ export const GraphPage = () => {
 
   if (!data) return <div>Não a rotas para exibir</div>;
 
-  return (
-    <Page>
-      <GraphComponent data={data}></GraphComponent>
-    </Page>
-  );
+  return <WithData data={data} />;
 };
