@@ -11,7 +11,7 @@ export const Page = ({ children }: Props) => {
         <SideBar></SideBar>
       </div>
 
-      <main>{children}</main>
+      <main className="flex items-center justify-start">{children}</main>
     </div>
   );
 };

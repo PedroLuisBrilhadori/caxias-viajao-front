@@ -1,31 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import { GraphData } from "@antv/g6";
-
-import { GraphComponent, GraphRef, Page } from "../components";
+import { GraphComponent, Page } from "../components";
 import { getGraphData } from "../services";
+import { useQuery } from "@tanstack/react-query";
 
 export const GraphPage = () => {
-  const [data, setData] = useState<GraphData>({});
-  const ref = useRef<GraphRef>(null);
-  const renderAfterCalled = useRef(false);
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () => getGraphData().then((data) => data),
+  });
 
-  useEffect(() => {
-    if (renderAfterCalled.current) {
-      getGraphData().then((data) => {
-        setData(data);
+  if (isLoading)
+    return (
+      <Page>
+        <>loading...</>
+      </Page>
+    );
 
-        if (ref.current) {
-          ref.current.refresh(data);
-        }
-      });
-    }
+  if (error) return <div>Error</div>;
 
-    renderAfterCalled.current = true;
-  }, []);
+  if (!data) return <div>Não a rotas para exibir</div>;
 
   return (
     <Page>
-      <GraphComponent data={data} ref={ref}></GraphComponent>
+      <GraphComponent data={data}></GraphComponent>
     </Page>
   );
 };

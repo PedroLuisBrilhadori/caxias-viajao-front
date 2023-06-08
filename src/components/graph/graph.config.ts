@@ -2,7 +2,7 @@ import { GraphOptions } from "@antv/g6";
 
 export const graphConfig: Partial<GraphOptions> = {
   width: 900,
-  height: 800,
+  height: 600,
   defaultNode: {
     type: "image",
     size: [15],
